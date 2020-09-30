@@ -1,0 +1,96 @@
+package main;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+
+public class GameServer implements Serializable
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Server[] Servers = new Server[3];
+	
+	ServerSocket serversocket;
+	
+	public static void main(String args[]) throws Exception
+	{
+		GameServer gameserver = new GameServer();
+		
+	}
+	
+	public GameServer()
+	{
+		try
+		{
+			System.out.println("Server created");
+			this.serversocket = new ServerSocket(8000);
+		}
+		catch (IOException e)
+		{
+			System.out.println("Server starts failed :");
+			e.printStackTrace();
+		}
+	}
+	
+	public void Connect()
+	{
+		try
+		{
+			System.out.println("Connecting......");
+		}
+		catch (IOException e)
+		{				
+			e.printStackTrace();
+	    }
+		
+	}
+	
+	//Single Server class use to connect each player server
+	public class Server implements Runnable
+	{
+		private Socket Socket;
+		private ObjectInputStream In;
+		private ObjectOutputStream Out;
+		private int id;
+		
+		public Server(Socket socket, int id)
+		{
+			this.Socket = socket;
+			this.id = id;
+			try
+			{
+				In = new ObjectInputStream(this.Socket.getInputStream());
+				Out = new ObjectOutputStream(this.Socket.getOutputStream());
+				
+			}
+			catch(IOException e)
+			{
+				System.out.println("Server connection error : fail ot connect ");
+				e.printStackTrace();
+			}
+		}
+		
+		//keep the server running to connect player client
+		public void run()
+		{
+			try
+			{
+				while(true);
+			}
+			catch(Exception e)
+			{
+				System.out.println("Server Crashed: ");
+				e.printStackTrace();
+			}
+		}
+		
+	}
+}
+
+

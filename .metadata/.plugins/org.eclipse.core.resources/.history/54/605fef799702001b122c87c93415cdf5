@@ -1,0 +1,40 @@
+package main;
+
+public class ScorePad {
+	String name;
+	int[] Set_Score;
+	
+	//initialize the ScoreCard
+	public ScorePad(String name)
+	{
+		this.name = name;
+		Set_Score = new int[6];
+
+	}
+	
+	//return the sum of upper score
+	public int Total_Set()
+	{
+		int sum = 0;
+		for(int i = 0; i < 6; i++)
+		{
+			sum += Set_Score[i];
+		}
+		return sum;
+	}
+
+	
+	
+	//return the total of Score
+	public int Total_Score()
+	{
+		return this.Total_Set();
+	}
+	
+	private void printScore()
+	{
+		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("|                                                                              |");
+		System.out.println("");
+	}
+}

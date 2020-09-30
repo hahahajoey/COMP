@@ -1,0 +1,49 @@
+package main;
+
+public class ScoreCard {
+	String name;
+	int[] Upper_Score;
+	int[] Lower_Score;
+	
+	//initialize the ScoreCard
+	public ScoreCard(String name)
+	{
+		this.name = name;
+		Upper_Score = new int[6];
+		Lower_Score = new int[5];
+	}
+	
+	//return the sum of upper score
+	public int Total_Upper()
+	{
+		int sum = 0;
+		for(int i = 0; i < 6; i++)
+		{
+			sum += Upper_Score[i];
+		}
+		return sum;
+	}
+	
+	//return lower
+	public int Total_Lower()
+	{
+		int sum = 0;
+		for(int i = 0; i < 5; i++)
+		{
+			sum += Lower_Score[i];
+		}
+		return sum;
+	}
+	
+	public int Total_Score()
+	{
+		return this.Total_Upper() + this.Total_Lower();
+	}
+	
+	private void printScore()
+	{
+		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("|                                                                              |");
+		System.out.println("");
+	}
+}
