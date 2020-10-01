@@ -22,6 +22,5 @@ INDEX VERSION 1.131+D:\Joey's files\culearn\COMP 4004\.metadata\.plugins\org.ecl
 970968316.index
 1758090376.index
 2706949200.index
-3916681956.index
 1280511152.index
 2451653073.index

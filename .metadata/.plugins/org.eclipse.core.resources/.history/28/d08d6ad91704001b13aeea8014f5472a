@@ -87,7 +87,7 @@ public class GameServer implements Serializable
 		Servers[1].sendScorePad(ScorePads);
 		Servers[2].sendScorePad(ScorePads);
 		
-		turnNum = 0;
+		turnNum = 1;
 		int countWin = 1;
 		
 		while(countWin > 0)
@@ -105,12 +105,12 @@ public class GameServer implements Serializable
 			Servers[1].sendTurns(turnNum);
 			Servers[1].sendScorePad(ScorePads);
 			ScorePads = Servers[1].receiveScore();
-			System.out.println("Player 2 score is : " + ScorePads[0].Score);
+			System.out.println("Player 1 score is : " + ScorePads[0].Score);
 			
 			Servers[2].sendTurns(turnNum);
 			Servers[2].sendScorePad(ScorePads);
 			ScorePads = Servers[2].receiveScore();
-			System.out.println("Player 3 score is : " + ScorePads[0].Score);
+			System.out.println("Player 1 score is : " + ScorePads[0].Score);
 		}
 	}
 	

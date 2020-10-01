@@ -70,33 +70,25 @@ public class PlayerClient implements Serializable
 		dices = rollDies();
 		int[] types = new int[6];
 		int FC_counter = printFC(FC);
-		int[] Chest = new int[8];
-		for(int i=0; i<Chest.length; i++)
-		{Chest[i] = -1;}
 		types = CountType(dices, FC, FC_counter);
 		
 		//loop for game
 		while(true)
 		{
-			System.out.println(Count(dices,0));
+			System.out.println(types[0]);
 			if(dead(types[0]))
 			{
 				System.out.println("You are dead");
-				for(int i=0; i<Chest.length; i++)
-				{Chest[i] = 0;}
 				break;
 			}
-			
-			if (FC == 0)
-			{
-				
-			}
-			
+
 			printDices(dices);
 			System.out.print("\nDo you want to reroll?(Y/N) : ");
 			if(input.next().equals("Y"))
 			{
-				dices = reroll(dices, FC);
+				System.out.println("Please entry the dice number with the one you want to reroll :(1,2,3....)");
+				String[] re = (input.next()).replaceAll("\\s", "").split(",");
+				dices = reroll(re, dices, FC);
 				types = CountType(dices, FC, FC_counter);
 			}
 			else
@@ -106,28 +98,9 @@ public class PlayerClient implements Serializable
 		return Player_Score;
 	}
 	
-	//Treasure chest
-	public int[] MoveChest(int[] Dices, int[] Chest)
-	{
-		System.out.println("You have these dice in chest");
-		printDices(Chest);
-		System.out.println("And you have these dice");
-		printDices(Dices);
-		System.out.println("Please entry the dice number with the one you want to reroll :(1,2,3....)");
-		String[] re = (input.next()).replaceAll("\\s", "").split(",");
-		
-		
-		return Chest;
-	}
-	
-	
-	
 	//reroll with the user input
-	public int[] reroll(int[] Dices,int FC)
+	public int[] reroll(String[] re, int[] Dices,int FC)
 	{
-		System.out.println("Please entry the dice number with the one you want to reroll :(1,2,3....)");
-		String[] re = (input.next()).replaceAll("\\s", "").split(",");
-		
 		int maxroll = 6;
 		Random r =new Random();
 		for(String s: re)
@@ -135,8 +108,6 @@ public class PlayerClient implements Serializable
 			if(maxroll == 0)
 			{break;}
 			int redice = Integer.parseInt(s) - 1;
-			if(Dices[redice] == -1)
-			{continue;}
 			if((Dices[redice] == 0) && (FC != 2))
 			{continue;}
 			else if((Dices[redice] == 0) && (FC == 2))
@@ -190,7 +161,7 @@ public class PlayerClient implements Serializable
 		int counter = 0;
 		for(int i = 0;i < 8;i++)
 		{
-			if(Dices[i] == item)
+			if(Dices[0] == item)
 			{counter++;}
 		}
 		return counter;
@@ -201,7 +172,6 @@ public class PlayerClient implements Serializable
 		System.out.print("Here are the dies : ");
 		for(int i = 0 ; i < 8; i++)
 		{
-			System.out.print((i+1)+". ");
 			switch(Dices[i])
 			{
 			case 0:
