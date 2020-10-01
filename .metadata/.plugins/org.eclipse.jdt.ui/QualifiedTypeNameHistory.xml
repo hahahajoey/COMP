@@ -7,4 +7,7 @@
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="java.net.Socket"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.parser.Scanner"/>
+    <fullyQualifiedTypeName name="junit.framework.TestCase"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="main.ScorePad"/>
 </qualifiedTypeNameHistroy>

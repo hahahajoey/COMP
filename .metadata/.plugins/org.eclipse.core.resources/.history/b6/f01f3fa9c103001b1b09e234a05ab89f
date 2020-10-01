@@ -1,0 +1,29 @@
+package main;
+
+public class ScorePad {
+	String name;
+	int Score;
+	boolean win;
+	
+	//initialize the ScoreCard
+	public ScorePad(String name)
+	{
+		this.name = name;
+		Score = 0;
+		win = false;
+	}
+
+	
+	//print out the scores for player to view
+	public void printScore()
+	{
+		System.out.println();
+		System.out.println("Score for player : " + name +" " + Score);
+	}
+	
+	//return this object
+	public ScorePad getScorePad()
+	{
+		return this;
+	}
+}

@@ -1,0 +1,31 @@
+package main;
+
+public class ScorePad {
+	String name;
+	int Score;
+	boolean win;
+	int debuff;
+	
+	//initialize the ScoreCard
+	public ScorePad(String name)
+	{
+		this.name = name;
+		S
+		debuff = 0;
+	}
+
+	
+	//print out the scores for player to view
+	public void printScore()
+	{
+		System.out.println();
+		System.out.println("| Score for player : " + name + "\t \t \t \t \t \t \t \t \t \t \t \t \t \t|");
+		System.out.println("| Sets Scores: \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t|");
+	}
+	
+	//return this object
+	public ScorePad getScorePad()
+	{
+		return this;
+	}
+}

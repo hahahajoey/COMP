@@ -1,0 +1,66 @@
+package main;
+
+public class ScorePad {
+	String name;
+	int[] Set_Score;
+	int Dianmond;
+	int Gold;
+	int Full_Chest;
+	boolean win;
+	int debuff;
+	
+	//initialize the ScoreCard
+	public ScorePad(String name)
+	{
+		this.name = name;
+		Set_Score = new int[6];
+		debuff = 0;
+		Dianmond = 0;
+		Gold = 0;
+	}
+	
+	//return the sum of sets score
+	public int Total_Set()
+	{
+		int sum = 0;
+		for(int i = 0; i < 6; i++)
+		{
+			sum += Set_Score[i];
+		}
+		return sum;
+	}
+
+	//return the pair of Dianmonds and Gold score
+	public int Pair()
+	{
+		return (Dianmond > Gold ? Gold * 100 : Dianmond * 100);
+	}
+	
+	//return the sum of upper score
+	public int Total_DG()
+	{
+		
+		return (Dianmond * 100 + Gold *100) + Pair();
+	}
+	
+	
+	//return the total of Score
+	public int Total_Score()
+	{
+		return Total_Set() + Total_DG() + Full_Chest * 500;
+	}
+	
+	//print out the scores for player to view
+	public void printScore()
+	{
+		System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("| Score for player : " + name + "\t \t \t \t \t \t \t \t \t \t \t \t \t \t|");
+		System.out.println("| Sets Scores: \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t|");
+	}
+	
+	//return this object
+	public ScorePad getScorePad()
+	{
+		return this;
+	}
+}

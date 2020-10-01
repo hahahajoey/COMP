@@ -1,0 +1,290 @@
+package main;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.Socket;
+import java.util.Random;
+import java.util.Scanner;
+
+
+public class PlayerClient implements Serializable
+{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public String name;
+	int id;
+	ScorePad[] Player_Score = new ScorePad[3];
+	static Client Player_Client_Connect;
+	
+	public PlayerClient(String name)
+	{
+		this.name = name;
+		Player_Score[0] = new ScorePad(name);
+	}
+	
+	public static void main(String args[])
+	{
+		Scanner user_input = new Scanner(System.in);
+		System.out.println("Please enter the name :");
+		String name = user_input.next();
+		PlayerClient player = new PlayerClient(name);
+		player.connectClient();
+		player.startGame();
+		player.returnWin();
+		user_input.close();
+	}
+	
+	public void connectClient()
+	{
+		Player_Client_Connect = new Client();
+	}
+	
+	public void startGame()
+	{
+		Player_Score = Player_Client_Connect.receiveScorePad();
+		while(true)
+		{
+			int roundNum = Player_Client_Connect.receiveRoundNum();
+			if (roundNum < 0)
+			{break;}
+			System.out.println("********Round Number " + roundNum + "********");
+			Player_Score = Player_Client_Connect.receiveScorePad();
+			this.printPlayerScores(id);
+			Player_Client_Connect.send_ScorePads();
+		}
+	}
+	
+	//game play
+	public ScorePad[] Round()
+	{
+		Scanner input = new Scanner(System.in);
+		
+		// 1:skull 2:Parrot 3:Coin 4:Monkey 5:Sword 6:Diamond
+		int[] dices = new int[8];
+		Random r = new Random();
+		// 1:Treasure Chest 2:Captain 3:Sorceress 4:Sea Battle 5:Gold 6:Diamond 7:Monkey Business 8:Skulls
+		int FC = r.nextInt(8);
+		dices = rollDies();
+		printDices(dices);
+		int[] types = new int[6];
+		
+		//loop for game
+		while(true)
+		{
+			if(Count(dices,0) == 3)
+			{
+				System.out.println("You dead, wait of next round.");
+				break;
+			}
+			printDices(dices);
+			System.out.println("Do you want to reroll");
+		}
+		
+		return Player_Score;
+	}
+	
+	
+	//count each type of dice
+	public int[] CountType(int[] dices)
+	{
+		int[] types = new int[6];
+		
+		for(int i = 0; i < 6; i++)
+		{
+			types[i] = Count(dices, i);
+		}
+		return types;
+	}
+	
+	//count single type of dice
+	public int Count(int[] Dices,int item)
+	{
+		int counter = 0;
+		for(int i = 0;i < 8;i++)
+		{
+			if(Dices[0] == item)
+			{counter++;}
+		}
+		return counter;
+	}
+	
+	public void printDices(int[] Dices)
+	{
+		System.out.print("Here are the dies : ");
+		for(int i = 0 ; i < 8; i++)
+		{
+			switch(Dices[i])
+			{
+			case 0:
+				System.out.print("Skull ");
+			case 1:
+				System.out.print("Parrot ");
+			case 2:
+				System.out.print("Money ");
+			case 3:
+				System.out.print("Monkey ");
+			case 4:
+				System.out.print("Sword ");
+			case 5:
+				System.out.print("boat ");
+			}
+		}
+		System.out.println();
+	}
+	
+	public void printFC(int FC)
+	{
+		System.out.print("Here are the Fortune Card : ");
+		switch(FC)
+		{
+		case 0:
+			System.out.print("Treasure Chest ");
+		case 1:
+			System.out.print("Captain ");
+		case 2:
+			System.out.print("Sorceress ");
+		case 3:
+			System.out.print("Sea Battle ");
+		case 4:
+			System.out.print("Gold ");
+		case 5:
+			System.out.print("Diamond ");
+		case 6:
+			System.out.print("Monkey Business");
+		case 7:
+			System.out.print("Skulls ");
+		}
+		System.out.println();
+	}
+	
+	public int[] rollDies()
+	{
+		int[] Dies = new int[8];
+		Random r = new Random();
+		for(int i = 0; i < 8; i++)
+		{Dies[i] = r.nextInt(6);}
+		
+		return Dies;
+	}
+	
+	public void returnWin()
+	{
+		
+	}
+	
+	public void printPlayerScores(int id) 
+	{
+		switch(id)
+		{
+		case 0:
+			Player_Score[0].printScore();
+			Player_Score[1].printScore();
+			Player_Score[2].printScore();
+		case 1:
+			Player_Score[1].printScore();
+			Player_Score[0].printScore();
+			Player_Score[2].printScore();
+		default :
+			Player_Score[2].printScore();
+			Player_Score[0].printScore();
+			Player_Score[1].printScore();
+		}
+	}
+	
+	private class Client
+	{
+		Socket socket;
+		private ObjectInputStream In;
+		private ObjectOutputStream Out;
+		
+		public Client()
+		{
+			try 
+			{
+				this.socket = new Socket("localhost",8000);
+				this.In = new ObjectInputStream(this.socket.getInputStream());
+				this.Out = new ObjectOutputStream(this.socket.getOutputStream());
+				
+				id = this.In.readInt();
+				
+				System.out.println("Loginin as : " + name);
+				send_ScorePad();
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+			
+		}
+		
+		void send_ScorePad()
+		{
+			try
+			{
+				Out.writeObject(new ScorePad(name));
+				Out.flush();
+			}
+			catch (IOException e)
+			{
+				System.out.println("ScordPad sent fail :");
+				e.printStackTrace();
+			}
+		}
+		
+		void send_ScorePads()
+		{
+			try
+			{
+				Out.writeObject(Player_Score[0].getScorePad());
+				Out.flush();
+			}
+			catch (IOException e)
+			{
+				System.out.println("ScordPad sent fail :");
+				e.printStackTrace();
+			}
+		}
+		
+		ScorePad[] receiveScorePad()
+		{
+			ScorePad[] Score_Pad = new ScorePad[3];
+			try {
+				ScorePad temp = (ScorePad) In.readObject();
+				Score_Pad[0] = temp;
+				temp = (ScorePad) In.readObject();
+				Score_Pad[1] = temp;
+				temp = (ScorePad) In.readObject();
+				Score_Pad[2] = temp;
+				return Score_Pad;
+
+			} catch (IOException e) {
+				System.out.println("Score pad is missing from sever");
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				System.out.println("class not found");
+				e.printStackTrace();
+			}
+			return Score_Pad;
+		}
+		
+		int receiveRoundNum()
+		{
+			try
+			{
+				return In.readInt();
+			}
+			catch(IOException e)
+			{
+				System.out.println("Round num is missing from server :");
+				e.printStackTrace();
+			}
+			return 0;
+		}
+	}
+
+}

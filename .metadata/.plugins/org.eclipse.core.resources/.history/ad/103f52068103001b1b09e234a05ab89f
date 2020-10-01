@@ -1,0 +1,140 @@
+package main;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.net.Socket;
+import java.util.Scanner;
+
+
+public class PlayerClient implements Serializable
+{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public String name;
+	int id;
+	ScorePad[] Player_Score = new ScorePad[3];
+	static Client Player_Client_Connect;
+	
+	public PlayerClient(String name)
+	{
+		this.name = name;
+		Player_Score[0] = new ScorePad(name);
+	}
+	
+	public static void main(String args[])
+	{
+		Scanner user_input = new Scanner(System.in);
+		System.out.println("Please enter the name :");
+		String name = user_input.next();
+		PlayerClient player = new PlayerClient(name);
+		player.connectClient();
+		player.startGame();
+		player.returnWin();
+		user_input.close();
+	}
+	
+	public void connectClient()
+	{
+		Player_Client_Connect = new Client();
+	}
+	
+	public void startGame()
+	{
+		Player_Score = Player_Client_Connect.receiveScorePad();
+		while(true)
+		{
+			int roundNum = Player_Client_Connect.receiveRoundNum();
+			if (roundNum < 0)
+			{break;}
+			System.out.println("********Round Number " + roundNum + "********");
+		}
+	}
+	
+	public void returnWin()
+	{
+		
+	}
+	
+	private class Client
+	{
+		Socket socket;
+		private ObjectInputStream In;
+		private ObjectOutputStream Out;
+		
+		public Client()
+		{
+			try 
+			{
+				this.socket = new Socket("localhost",8000);
+				this.In = new ObjectInputStream(this.socket.getInputStream());
+				this.Out = new ObjectOutputStream(this.socket.getOutputStream());
+				
+				id = this.In.readInt();
+				
+				System.out.println("Loginin as : " + name);
+				send_ScorePad();
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+			
+		}
+		
+		void send_ScorePad()
+		{
+			try
+			{
+				Out.writeObject(Player_Score[0].getScorePad());
+				Out.flush();
+			}
+			catch (IOException e)
+			{
+				System.out.println("ScordPad sent fail :");
+				e.printStackTrace();
+			}
+		}
+		
+		ScorePad[] receiveScorePad()
+		{
+			ScorePad[] Score_Pad = new ScorePad[3];
+			try {
+				ScorePad temp = (ScorePad) In.readObject();
+				Score_Pad[0] = temp;
+				temp = (ScorePad) In.readObject();
+				Score_Pad[1] = temp;
+				temp = (ScorePad) In.readObject();
+				Score_Pad[2] = temp;
+				return Score_Pad;
+
+			} catch (IOException e) {
+				System.out.println("Score pad is missing from sever");
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				System.out.println("class not found");
+				e.printStackTrace();
+			}
+			return Score_Pad;
+		}
+		
+		int receiveRoundNum()
+		{
+			try
+			{
+				return In.readInt();
+			}
+			catch(IOException e)
+			{
+				System.out.println("Round num is missing from server :");
+				e.printStackTrace();
+			}
+			return 0;
+		}
+	}
+
+}
