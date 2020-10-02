@@ -111,14 +111,8 @@ public class GameServer implements Serializable
 			Servers[2].sendScorePad(ScorePads);
 			ScorePads = Servers[2].receiveScore();
 			System.out.println("Player 3 score is : " + ScorePads[0].Score);
-			
-			if(ScorePads[0].Score >=6000 || ScorePads[1].Score >=6000 || ScorePads[2].Score >=6000)
-			{countWin--;}
-			else if(countWin < 1)
-			{countWin++;}
 		}
 	}
-	
 	
 	//Single Server class use to connect each player server
 	public class Server implements Runnable

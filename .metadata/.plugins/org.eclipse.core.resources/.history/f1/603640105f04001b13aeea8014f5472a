@@ -127,25 +127,17 @@ public class PlayerClient implements Serializable
 		
 		int Score_change = C_Score(dices, Chest, FC, FC_counter);
 		System.out.println(Score_change);
-		
 		if(Score_change > 0 || FC == 3)
-		{
-			Player_Score[id-1].Score += Score_change;
-			if(Player_Score[id-1].Score < 0 )
-			{Player_Score[id-1].Score = 0;}
-		}
+		{Player_Score[id-1].Score += Score_change;}
 		else if(Score_change < 0)
 		{
 			for(int i=0; i<3; i++)
 			{
-				if(i != (id-1))
-				{
-					Player_Score[i].Score -= Score_change;
-					if(Player_Score[i].Score < 0 )
-					{Player_Score[i].Score = 0;}
-				}
+				if(i != id)
+				{Player_Score[i].Score -= Score_change;}
 			}
 		}
+		
 		return Player_Score;
 	}
 	
@@ -187,8 +179,6 @@ public class PlayerClient implements Serializable
 				{return -1000;}
 			}
 		}
-		else if(types[0] > 3)
-		{return (types[0] * 100 * -1);}
 		
 		Score += (types[2] * 100 + types[5] * 100);
 				
@@ -313,10 +303,16 @@ public class PlayerClient implements Serializable
 	
 	//death boolean
 	public boolean dead2(int numSkull)
-	{return numSkull == 3;}
+	{
+		System.out.println(numSkull);
+		return numSkull == 3;
+	}
 	
 	public boolean dead(int numSkull)
-	{return numSkull >= 3;}
+	{
+		System.out.println(numSkull);
+		return numSkull >= 3;
+	}
 	
 	//count each type of dice
 	public int[] CountType(int[] dices,int FC, int FC_counter)

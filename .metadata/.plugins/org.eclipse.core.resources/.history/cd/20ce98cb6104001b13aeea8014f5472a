@@ -146,6 +146,9 @@ public class PlayerClient implements Serializable
 				}
 			}
 		}
+		System.out.println("Player 1 score is : " + Player_Score[0].Score);
+		System.out.println("Player 2 score is : " + Player_Score[1].Score);
+		System.out.println("Player 3 score is : " + Player_Score[2].Score);
 		return Player_Score;
 	}
 	
@@ -187,8 +190,6 @@ public class PlayerClient implements Serializable
 				{return -1000;}
 			}
 		}
-		else if(types[0] > 3)
-		{return (types[0] * 100 * -1);}
 		
 		Score += (types[2] * 100 + types[5] * 100);
 				

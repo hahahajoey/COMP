@@ -80,7 +80,6 @@ public class PlayerClient implements Serializable
 			System.out.println("You died by the first roll");
 			return Player_Score;
 		}
-		int Skullnum = 0;
 		
 		//loop for game
 		while(true)
@@ -106,13 +105,6 @@ public class PlayerClient implements Serializable
 			{System.out.println("You are in SeaBattle, try to get " + FC_counter + " Swords.");}
 			else if(FC == 7)
 			{System.out.println("You have get " + FC_counter + " Skulls from FC.");}
-			else if(types[0] >= 4)
-			{
-				if(Skullnum == types[0])
-				{break;}
-				System.out.print("You have enter the island of skulls");
-				Skullnum = types[0];
-			}
 			
 			printDices(dices);
 			System.out.print("\nDo you want to reroll?(Y/N) : ");
@@ -126,26 +118,17 @@ public class PlayerClient implements Serializable
 		}
 		
 		int Score_change = C_Score(dices, Chest, FC, FC_counter);
-		System.out.println(Score_change);
-		
-		if(Score_change > 0 || FC == 3)
-		{
-			Player_Score[id-1].Score += Score_change;
-			if(Player_Score[id-1].Score < 0 )
-			{Player_Score[id-1].Score = 0;}
-		}
+		if(Score_change > 0)
+		{Player_Score[id].Score += Score_change;}
 		else if(Score_change < 0)
 		{
 			for(int i=0; i<3; i++)
 			{
-				if(i != (id-1))
-				{
-					Player_Score[i].Score -= Score_change;
-					if(Player_Score[i].Score < 0 )
-					{Player_Score[i].Score = 0;}
-				}
+				if(i != id)
+				{Player_Score[i].Score -= Score_change;}
 			}
 		}
+		
 		return Player_Score;
 	}
 	
@@ -153,91 +136,8 @@ public class PlayerClient implements Serializable
 	public int C_Score(int[] Dices, int[] Chest,int FC, int FC_counter) 
 	{
 		int Score = 0;
-		int time = 1;
-		int[] types = CountType(Dices, FC, FC_counter);
-		if(FC == 0)
-		{
-			for(int i=0; i<8; i++)
-			{
-				if(Chest[i] != -1)
-				{Dices[i] = Chest[i];}
-			}
-		}
-		else if(FC == 1)
-		{time = 2;}
-		else if(FC == 3)
-		{
-			if(types[4] == FC_counter)
-			{
-				if(FC_counter == 2)
-				{Score += 300;}
-				else if(FC_counter == 3)
-				{Score += 500;}
-				else
-				{Score += 1000;}
-				types[4] = 0;
-			}
-			else
-			{
-				if(FC_counter == 2)
-				{return -300;}
-				else if(FC_counter == 3)
-				{return -500;}
-				else
-				{return -1000;}
-			}
-		}
-		else if(types[0] > 3)
-		{return (types[0] * 100 * -1);}
 		
-		Score += (types[2] * 100 + types[5] * 100);
-				
-		for(int i=1; i<6; i++)
-		{
-			if(types[i] == 8 )
-			{
-				Score += 4000;
-				types[i] = 0;
-			}
-			else if(types[i] == 7 )
-			{
-				Score += 2000;
-				types[i] = 0;
-			}
-			else if(types[i] == 6 )
-			{
-				Score += 1000;
-				types[i] = 0;
-			}
-			else if(types[i] == 5 )
-			{
-				Score += 500;
-				types[i] = 0;
-			}
-			else if(types[i] == 4 )
-			{
-				Score += 200;
-				types[i] = 0;
-			}
-			else if(types[i] == 3 )
-			{
-				Score += 100;
-				types[i] = 0;
-			}
-		}
-		FC_counter += Full_Chest(types, Dices);
-		return Score * time;
-	}
-	
-	//give 500 if Full_chest
-	public int Full_Chest(int[] types, int[] dices)
-	{
-		if(Count(dices,0) > 0)
-		{return 0;}
-		else if((types[1]>0) || (types[3]>0) || (types[4]>0))
-		{return 0;}
-		else
-		{return 500;}
+		return Score;
 	}
 	
 	//Treasure chest
@@ -313,10 +213,16 @@ public class PlayerClient implements Serializable
 	
 	//death boolean
 	public boolean dead2(int numSkull)
-	{return numSkull == 3;}
+	{
+		System.out.println(numSkull);
+		return numSkull == 3;
+	}
 	
 	public boolean dead(int numSkull)
-	{return numSkull >= 3;}
+	{
+		System.out.println(numSkull);
+		return numSkull >= 3;
+	}
 	
 	//count each type of dice
 	public int[] CountType(int[] dices,int FC, int FC_counter)
