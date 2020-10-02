@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestScore" project="Pirates" tests="2" started="2" failures="0" errors="1" ignored="0">
+  <testsuite name="main.TestScore" time="0.0" displayname="TestScore" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]">
+    <testcase name="test1" classname="main.TestScore" time="0.0" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test1()]"/>
+  </testsuite>
+  <testsuite name="main.TestScore" time="0.0" displayname="TestScore" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]">
+    <testcase name="org.junit.runner.manipulation.Filter" classname="org.junit.runner.manipulation.Filter" time="0.0" displayname="initializationError" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:initializationError(org.junit.runner.manipulation.Filter)]">
+      <error>java.lang.Exception: No tests found matching Method test1(main.TestScore) from org.junit.vintage.engine.descriptor.RunnerRequest@61322f9d&#13;
+	at org.junit.internal.requests.FilterRequest.getRunner(FilterRequest.java:40)&#13;
+	at org.junit.vintage.engine.descriptor.RunnerTestDescriptor.applyFilters(RunnerTestDescriptor.java:136)&#13;
+	at org.junit.vintage.engine.discovery.RunnerTestDescriptorPostProcessor.applyFiltersAndCreateDescendants(RunnerTestDescriptorPostProcessor.java:46)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)&#13;
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)&#13;
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)&#13;
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)&#13;
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)&#13;
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)&#13;
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)&#13;
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)&#13;
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497)&#13;
+	at org.junit.vintage.engine.discovery.VintageDiscoverer.discover(VintageDiscoverer.java:50)&#13;
+	at org.junit.vintage.engine.VintageTestEngine.discover(VintageTestEngine.java:63)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.discoverEngineRoot(DefaultLauncher.java:181)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.discoverRoot(DefaultLauncher.java:168)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.discover(DefaultLauncher.java:124)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.&lt;init&gt;(JUnit5TestReference.java:46)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader.createFilteredTest(JUnit5TestLoader.java:71)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader.createTest(JUnit5TestLoader.java:64)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader.loadTests(JUnit5TestLoader.java:53)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:526)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

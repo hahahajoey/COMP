@@ -1,0 +1,37 @@
+package main;
+
+import org.junit.jupiter.api.Test;
+
+import junit.framework.TestCase;
+
+public class TestScore extends TestCase
+{
+	PlayerClient P1 = new PlayerClient("P1"); 
+
+	//die with 3 skulls on first roll  -> interface reports death & end of turn  
+	@Test
+	public void test1() 
+	{
+		// 0:skull 1:Parrot 2:Coin 3:Monkey 4:Sword 5:Diamond
+		int[] dices = {0,0,0,1,2,3,5,5};
+		assertEquals(true, P1.dead2(P1.Count(dices, 0)));
+	}
+	
+	//roll 1 skull, 4 parrots, 3 swords, hold parrots, reroll swords, get 2 skulls 1 sword  die
+	@Test
+	public void test2() 
+	{
+		int[] dices = {0,1,1,1,1,4,4,4};
+		int[] redice = {0,1,1,1,1,0,0,4};
+		assertEquals(true, P1.dead2(P1.Count(redice, 0)));
+	}
+
+	//roll 2 skulls, 4 parrots, 2 swords, hold parrots, reroll swords, get 1 skull 1 sword  die
+	@Test
+	public void test3() 
+	{
+		int[] dices = {0,0,1,1,1,1,4,4};
+		int[] redice = {0,0,1,1,1,1,0,4};
+		assertEquals(true, P1.dead2(P1.Count(redice, 0)));
+	}
+}

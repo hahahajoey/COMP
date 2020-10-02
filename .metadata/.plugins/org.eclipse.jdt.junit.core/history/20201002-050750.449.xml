@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestScore (1)" project="Pirates" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="main.TestScore" time="0.022" displayname="TestScore" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]">
+    <testcase name="test1" classname="main.TestScore" time="0.022" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test1()]"/>
+  </testsuite>
+  <testsuite name="main.TestScore" time="0.002" displayname="TestScore" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]">
+    <testcase name="test1" classname="main.TestScore" time="0.002" displayname="test1" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test1(main.TestScore)]"/>
+  </testsuite>
+</testrun>
