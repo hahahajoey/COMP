@@ -424,10 +424,7 @@ public class PlayerClient implements Serializable
 	
 	public void returnWin()
 	{
-		if(Player_Score[id-1].win)
-		{System.out.println("You win");}
-		else
-		{System.out.println("You lost");}
+		
 	}
 	
 	public void printPlayerScores(int id) 

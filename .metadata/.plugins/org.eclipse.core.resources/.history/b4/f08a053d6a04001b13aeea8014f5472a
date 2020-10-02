@@ -117,25 +117,6 @@ public class GameServer implements Serializable
 			else if(countWin < 1)
 			{countWin++;}
 		}
-		if(ScorePads[0].Score >=6000)
-		{
-			System.out.println("Player 1 win");
-			ScorePads[0].win = true;
-		}
-		if(ScorePads[1].Score >=6000)
-		{
-			System.out.println("Player 2 win");
-			ScorePads[1].win = true;
-		}
-		if(ScorePads[2].Score >=6000)
-		{
-			System.out.println("Player 3 win");
-			ScorePads[2].win = true;
-		}
-		Servers[0].sendTurns(-1);
-		Servers[1].sendTurns(-1);
-		Servers[2].sendTurns(-1);
-		
 	}
 	
 	
