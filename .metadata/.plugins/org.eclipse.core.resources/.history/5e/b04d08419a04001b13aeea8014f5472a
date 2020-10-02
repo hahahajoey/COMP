@@ -68,6 +68,8 @@ public class TestScore extends TestCase
 	@Test
 	public void test7() 
 	{
+		// 0:skull 1:Parrot 2:Coin 3:Monkey 4:Sword 5:Diamond
+		// 0:Treasure Chest 1:Captain 2:Sorceress 3:Sea Battle 4:Coin 5:Diamond 6:Monkey Business 7:Skulls
 		int[] dice = {3,3,3,4,4,4,-1,-1};
 		assertEquals(300, P1.C_Score(dice, null, 5, 0));
 	}

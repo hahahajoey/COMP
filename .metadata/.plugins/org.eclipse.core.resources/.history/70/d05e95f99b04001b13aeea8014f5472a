@@ -12,19 +12,14 @@ class TestFC extends TestCase
 	@Test
 	void Sorceress1() 
 	{
-		// 0:skull 1:Parrot 2:Coin 3:Monkey 4:Sword 5:Diamond
-		// 0:Treasure Chest 1:Captain 2:Sorceress 3:Sea Battle 4:Coin 5:Diamond 6:Monkey Business 7:Skulls
-		int[] dice = {0,0,-1,-1,-1,-1,-1,-1};
-		int numSorcerss = 1;
-		dice = P1.reroll(dice, -1/,1);
-		assertNotSame(1, numSorcerss);
+		int[] dice = {}
 	}
 	
 	//roll no skulls, then next round roll 1 skull and reroll for it, then score 
 	@Test
 	void Sorceress2() 
 	{
-		
+
 	}
 	
 	//roll no skulls, then next round roll 1 skull and reroll for it, then go to next round 

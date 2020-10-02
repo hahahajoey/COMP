@@ -71,7 +71,6 @@ public class PlayerClient implements Serializable
 		int[] types = new int[6];
 		int FC_counter = printFC(FC);
 		int[] Chest = new int[8];
-		int numSorcerss = 0;
 		for(int i=0; i<8; i++)
 		{Chest[i] = -1;}
 		types = CountType(dices, FC, FC_counter);
@@ -103,8 +102,6 @@ public class PlayerClient implements Serializable
 				if(input.next().equals("Y"))
 				{GetChest(dices, Chest);}
 			}
-			else if (FC==2)
-			{numSorcerss++;}
 			else if(FC == 3)
 			{System.out.println("You are in SeaBattle, try to get " + FC_counter + " Swords.");}
 			else if(FC == 7)
@@ -121,7 +118,7 @@ public class PlayerClient implements Serializable
 			System.out.print("\nDo you want to reroll?(Y/N) : ");
 			if(input.next().equals("Y"))
 			{
-				dices = reroll(dices, FC,numSorcerss);
+				dices = reroll(dices, FC);
 				types = CountType(dices, FC, FC_counter);
 			}
 			else
@@ -284,7 +281,7 @@ public class PlayerClient implements Serializable
 	
 	
 	//reroll with the user input
-	public int[] reroll(int[] Dices,int FC, int numSorcerss)
+	public int[] reroll(int[] Dices,int FC)
 	{
 		System.out.println("Please entry the dice number with the one you want to reroll :(1,2,3....)");
 		String[] re = (input.next()).replaceAll("\\s", "").split(",");
@@ -300,12 +297,12 @@ public class PlayerClient implements Serializable
 			int redice = Integer.parseInt(s) - 1;
 			if(Dices[redice] == -1)
 			{continue;}
-			if((Dices[redice] == 0) && (numSorcerss == 0))
+			if((Dices[redice] == 0) && (FC != 2))
 			{continue;}
-			else if((Dices[redice] == 0) && (numSorcerss > 0))
+			else if((Dices[redice] == 0) && (FC == 2))
 			{
-				numSorcerss--;
 				Dices[redice] = r.nextInt(6);
+				FC = -1;
 				System.out.println("Sorceress used");
 			}
 			else
