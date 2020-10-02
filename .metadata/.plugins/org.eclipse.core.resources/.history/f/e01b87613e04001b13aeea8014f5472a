@@ -71,40 +71,26 @@ public class PlayerClient implements Serializable
 		int[] types = new int[6];
 		int FC_counter = printFC(FC);
 		int[] Chest = new int[8];
-		for(int i=0; i<8; i++)
+		for(int i=0; i<Chest.length; i++)
 		{Chest[i] = -1;}
 		types = CountType(dices, FC, FC_counter);
-		
-		if(dead(types[0]))
-		{
-			System.out.println("You died by the first roll");
-			return Player_Score;
-		}
 		
 		//loop for game
 		while(true)
 		{
-			if(dead2(types[0]))
+			System.out.println(Count(dices,0));
+			if(dead(types[0]))
 			{
 				System.out.println("You are dead");
 				for(int i=0; i<Chest.length; i++)
-				{dices[i] = 0;}
+				{Chest[i] = 0;}
 				break;
 			}
 			
 			if (FC == 0)
 			{
-				System.out.print("\nDo you want to put dices into chest?(Y/N) : ");
-				if(input.next().equals("Y"))
-				{MoveChest(dices, Chest);}
-				System.out.print("\nDo you want to get dices from chest?(Y/N) : ");
-				if(input.next().equals("Y"))
-				{GetChest(dices, Chest);}
+				
 			}
-			else if(FC == 3)
-			{System.out.println("You are in SeaBattle, try to get " + FC_counter + " Swords.");}
-			else if(FC == 7)
-			{System.out.println("You have get " + FC_counter + " Skulls from FC.");}
 			
 			printDices(dices);
 			System.out.print("\nDo you want to reroll?(Y/N) : ");
@@ -117,67 +103,23 @@ public class PlayerClient implements Serializable
 			{break;}
 		}
 		
-		int Score_change = C_Score(dices, Chest, FC, FC_counter);
-		if(Score_change > 0)
-		{Player_Score[id].Score += Score_change;}
-		else if(Score_change < 0)
-		{
-			for(int i=0; i<3; i++)
-			{
-				if(i != id)
-				{Player_Score[i].Score -= Score_change;}
-			}
-		}
-		
 		return Player_Score;
 	}
 	
-	//Get Score
-	public int C_Score(int[] Dices, int[] Chest,int FC, int FC_counter) 
-	{
-		int Score = 0;
-		
-		return Score;
-	}
-	
 	//Treasure chest
-	public void MoveChest(int[] Dices, int[] Chest)
+	public int[] MoveChest(int[] Dices, int[] Chest)
 	{
 		System.out.println("You have these dice in chest");
 		printDices(Chest);
 		System.out.println("And you have these dice");
 		printDices(Dices);
-		System.out.println("Please entry the dice number with the one you want to put in chest :(1,2,3....)");
+		System.out.println("Please entry the dice number with the one you want to reroll :(1,2,3....)");
 		String[] re = (input.next()).replaceAll("\\s", "").split(",");
 		
-		for(int i=0; i<re.length; i++)
-		{
-			int put = Integer.parseInt(re[i]) - 1;
-			if(Dices[put] < 1)
-			{continue;}
-			Chest[put] = Dices[put];
-			Dices[put] = -1;
-		}
+		
+		return Chest;
 	}
 	
-	public void GetChest(int[] Dices, int[] Chest)
-	{
-		System.out.println("You have these dice in chest");
-		printDices(Chest);
-		System.out.println("And you have these dice");
-		printDices(Dices);
-		System.out.println("Please entry the dice number with the one you want get out of chest :(1,2,3....)");
-		String[] re = (input.next()).replaceAll("\\s", "").split(",");
-		
-		for(int i=0; i<re.length; i++)
-		{
-			int put = Integer.parseInt(re[i]) - 1;
-			if(Chest[put] < 1)
-			{continue;}
-			Dices[put] = Chest[put];
-			Chest[put] = -1;
-		}
-	}
 	
 	
 	//reroll with the user input
@@ -185,15 +127,13 @@ public class PlayerClient implements Serializable
 	{
 		System.out.println("Please entry the dice number with the one you want to reroll :(1,2,3....)");
 		String[] re = (input.next()).replaceAll("\\s", "").split(",");
-		while(re.length < 2)
-		{
-			System.out.println("You cant roll less then two dice. Cheating!");
-			re = (input.next()).replaceAll("\\s", "").split(",");
-		}
 		
+		int maxroll = 6;
 		Random r =new Random();
 		for(String s: re)
 		{
+			if(maxroll == 0)
+			{break;}
 			int redice = Integer.parseInt(s) - 1;
 			if(Dices[redice] == -1)
 			{continue;}
@@ -202,27 +142,22 @@ public class PlayerClient implements Serializable
 			else if((Dices[redice] == 0) && (FC == 2))
 			{
 				Dices[redice] = r.nextInt(6);
-				FC = -1;
+				maxroll--;
+				FC = 0;
 				System.out.println("Sorceress used");
 			}
 			else
-			{Dices[redice] = r.nextInt(6);}
+			{
+				Dices[redice] = r.nextInt(6);
+				maxroll--;
+			}
 		}
 		return Dices;
 	}
 	
 	//death boolean
-	public boolean dead2(int numSkull)
-	{
-		System.out.println(numSkull);
-		return numSkull == 3;
-	}
-	
 	public boolean dead(int numSkull)
-	{
-		System.out.println(numSkull);
-		return numSkull >= 3;
-	}
+	{return numSkull ==3;}
 	
 	//count each type of dice
 	public int[] CountType(int[] dices,int FC, int FC_counter)
@@ -305,7 +240,7 @@ public class PlayerClient implements Serializable
 			System.out.print("Sea Battle\n");
 			return r.nextInt(3)+2;
 		case 4:
-			System.out.print("Coin\n");
+			System.out.print("Gold\n");
 			return 1;
 		case 5:
 			System.out.print("Diamond\n");

@@ -117,27 +117,7 @@ public class PlayerClient implements Serializable
 			{break;}
 		}
 		
-		int Score_change = C_Score(dices, Chest, FC, FC_counter);
-		if(Score_change > 0)
-		{Player_Score[id].Score += Score_change;}
-		else if(Score_change < 0)
-		{
-			for(int i=0; i<3; i++)
-			{
-				if(i != id)
-				{Player_Score[i].Score -= Score_change;}
-			}
-		}
-		
 		return Player_Score;
-	}
-	
-	//Get Score
-	public int C_Score(int[] Dices, int[] Chest,int FC, int FC_counter) 
-	{
-		int Score = 0;
-		
-		return Score;
 	}
 	
 	//Treasure chest
@@ -150,13 +130,13 @@ public class PlayerClient implements Serializable
 		System.out.println("Please entry the dice number with the one you want to put in chest :(1,2,3....)");
 		String[] re = (input.next()).replaceAll("\\s", "").split(",");
 		
-		for(int i=0; i<re.length; i++)
+		for(int i=0; i<8; i++)
 		{
 			int put = Integer.parseInt(re[i]) - 1;
 			if(Dices[put] < 1)
 			{continue;}
-			Chest[put] = Dices[put];
-			Dices[put] = -1;
+			Chest[i] = Dices[i];
+			Dices[i] = -1;
 		}
 	}
 	
@@ -169,13 +149,13 @@ public class PlayerClient implements Serializable
 		System.out.println("Please entry the dice number with the one you want get out of chest :(1,2,3....)");
 		String[] re = (input.next()).replaceAll("\\s", "").split(",");
 		
-		for(int i=0; i<re.length; i++)
+		for(int i=0; i<8; i++)
 		{
 			int put = Integer.parseInt(re[i]) - 1;
-			if(Chest[put] < 1)
+			if(Dices[put] < 1)
 			{continue;}
-			Dices[put] = Chest[put];
-			Chest[put] = -1;
+			Dices[i] = Chest[i];
+			Chest[i] = -1;
 		}
 	}
 	
