@@ -11,7 +11,7 @@ public class TestTwoTurn extends TestCase
 	
 	//Test Case for one turn wining for Player 3 the server have to run out side of the testing
 	@Test
-	public void OneTurn() throws ClassNotFoundException
+	public void TwoTurn() throws ClassNotFoundException
 	{
 		PlayerClient P1 = new PlayerClient("P1");
 		PlayerClient P2 = new PlayerClient("P2");
@@ -34,21 +34,33 @@ public class TestTwoTurn extends TestCase
 		int[] chest = {-1,-1,-1,-1,-1,-1,-1,-1};
 		P1.Player_Score[0].Score += P1.C_Score(Dices,chest,-1,0);
 		P1.Player_Client_Connect.send_ScorePads();
-		assertEquals(100, P1.Player_Score[0].Score);
 		
 		P2.Player_Client_Connect.receiveRoundNum();
 		P2.Player_Score = P2.Player_Client_Connect.receiveScorePad();
 		int[] Dices2 = {5,5,5,5,5,5,5,5};
 		// FC 0:Treasure Chest 1:Captain 2:Sorceress 3:Sea Battle 4:Coin 5:Diamond 6:Monkey Business 7:Skulls
-		P2.Player_Score[1].Score += P2.C_Score(Dices2,chest,-1,0);
+		P2.Player_Score[1].Score += P2.C_Score(Dices2,chest,1,0);
 		P2.Player_Client_Connect.send_ScorePads();
-		assertEquals(, P2.Player_Score[1].Score);
+
 		
 		P3.Player_Client_Connect.receiveRoundNum();
 		P3.Player_Score = P3.Player_Client_Connect.receiveScorePad();
 		int[] Dices3 = {4,4,4,4,4,4,4,4};
 		P3.Player_Score[2].Score += P3.C_Score(Dices3,chest,-1,0);
 		P3.Player_Client_Connect.send_ScorePads();
-		assertEquals(4000, P3.Player_Score[2].Score);
+		
+		P1.Player_Client_Connect.receiveRoundNum();
+		P1.Player_Score = P1.Player_Client_Connect.receiveScorePad();
+		P1.Player_Client_Connect.send_ScorePads();
+		
+		P2.Player_Client_Connect.receiveRoundNum();
+		P2.Player_Score = P2.Player_Client_Connect.receiveScorePad();
+		P2.Player_Client_Connect.send_ScorePads();
+		
+		P3.Player_Client_Connect.receiveRoundNum();
+		P3.Player_Score = P3.Player_Client_Connect.receiveScorePad();
+		P3.Player_Client_Connect.send_ScorePads();
+		
+		assertEquals(true, P2.returnWin());
 	}
 }

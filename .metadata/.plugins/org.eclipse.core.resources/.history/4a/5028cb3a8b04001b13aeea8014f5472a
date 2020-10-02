@@ -90,7 +90,7 @@ public class GameServer implements Serializable
 		turnNum = 0;
 		int countWin = 1;
 		
-		while(countWin >= 0)
+		while(countWin > 0)
 		{
 			turnNum++;
 			

@@ -1,0 +1,19 @@
+package main;
+
+import org.junit.jupiter.api.Test;
+
+import junit.framework.TestCase;
+
+public class TestScore extends TestCase
+{
+	PlayerClient P1 = new PlayerClient("P1"); 
+
+	@Test
+	void test1() 
+	{
+		int[] dices = {0,0,0,1,2,3};
+		System.out.println(P1.Count(dices, 0));
+		assertEquals(true, P1.dead2(P1.Count(dices, 0)));
+	}
+
+}

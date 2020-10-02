@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestTwoTurn" project="Pirates" tests="2" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="main.TestTwoTurn" incomplete="true" displayname="TestTwoTurn" uniqueid="[engine:junit-jupiter]/[class:main.TestTwoTurn]">
+    <testcase name="OneTurn" classname="main.TestTwoTurn" incomplete="true" displayname="OneTurn()" uniqueid="[engine:junit-jupiter]/[class:main.TestTwoTurn]/[method:OneTurn()]"/>
+  </testsuite>
+  <testsuite name="main.TestTwoTurn" incomplete="true" displayname="TestTwoTurn" uniqueid="[engine:junit-vintage]/[runner:main.TestTwoTurn]">
+    <testcase name="junit.framework.TestSuite$1" classname="junit.framework.TestSuite.1" incomplete="true" displayname="warning" uniqueid="[engine:junit-vintage]/[runner:main.TestTwoTurn]/[test:warning(junit.framework.TestSuite$1)]"/>
+  </testsuite>
+</testrun>

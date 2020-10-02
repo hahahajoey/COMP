@@ -424,7 +424,7 @@ public class PlayerClient implements Serializable
 	
 	public boolean returnWin()
 	{
-		if(Player_Score[id-1].Score >= 6000)
+		if(Player_Score[id-1].win)
 		{
 			System.out.println("You win");
 			return true;

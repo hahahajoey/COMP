@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class GameServer implements Serializable
+public class GameServer implements Runnable
 {
 	/**
 	 * 
@@ -90,7 +90,7 @@ public class GameServer implements Serializable
 		turnNum = 0;
 		int countWin = 1;
 		
-		while(countWin >= 0)
+		while(countWin > 0)
 		{
 			turnNum++;
 			
@@ -105,12 +105,12 @@ public class GameServer implements Serializable
 			Servers[1].sendTurns(turnNum);
 			Servers[1].sendScorePad(ScorePads);
 			ScorePads = Servers[1].receiveScore();
-			System.out.println("Player 2 score is : " + ScorePads[1].Score);
+			System.out.println("Player 2 score is : " + ScorePads[0].Score);
 			
 			Servers[2].sendTurns(turnNum);
 			Servers[2].sendScorePad(ScorePads);
 			ScorePads = Servers[2].receiveScore();
-			System.out.println("Player 3 score is : " + ScorePads[2].Score);
+			System.out.println("Player 3 score is : " + ScorePads[0].Score);
 			
 			if(ScorePads[0].Score >=6000 || ScorePads[1].Score >=6000 || ScorePads[2].Score >=6000)
 			{countWin--;}
@@ -223,6 +223,13 @@ public class GameServer implements Serializable
 			}
 			return ScorePads;
 		}
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

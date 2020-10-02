@@ -13,6 +13,7 @@ public class TestOneTurn extends TestCase
 	@Test
 	public void OneTurn() throws ClassNotFoundException
 	{
+		Thread GS = new Thread();
 		
 		PlayerClient P1 = new PlayerClient("P1");
 		PlayerClient P2 = new PlayerClient("P2");
@@ -50,6 +51,5 @@ public class TestOneTurn extends TestCase
 		P3.Player_Score[2].Score += P3.C_Score(Dices3,chest,-1,0);
 		P3.Player_Client_Connect.send_ScorePads();
 		assertEquals(4000, P3.Player_Score[2].Score);
-		
 	}
 }

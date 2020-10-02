@@ -112,6 +112,22 @@ public class GameServer implements Serializable
 			ScorePads = Servers[2].receiveScore();
 			System.out.println("Player 3 score is : " + ScorePads[2].Score);
 			
+			if(ScorePads[0].Score >=6000)
+			{
+				System.out.println("Player 1 winning");
+				ScorePads[0].win = true;
+			}
+			if(ScorePads[1].Score >=6000)
+			{
+				System.out.println("Player 2 winning");
+				ScorePads[1].win = true;
+			}
+			if(ScorePads[2].Score >=6000)
+			{
+				System.out.println("Player 3 winning");
+				ScorePads[2].win = true;
+			}
+			
 			if(ScorePads[0].Score >=6000 || ScorePads[1].Score >=6000 || ScorePads[2].Score >=6000)
 			{countWin--;}
 			else if(countWin < 1)
