@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestScore (1)" project="Pirates" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="main.TestScore" time="0.025" displayname="TestScore" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]">
+    <testcase name="test1" classname="main.TestScore" time="0.006" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test1()]"/>
+    <testcase name="test2" classname="main.TestScore" time="0.001" displayname="test2()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test2()]"/>
+    <testcase name="test3" classname="main.TestScore" time="0.0" displayname="test3()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test3()]"/>
+    <testcase name="test4" classname="main.TestScore" time="0.018" displayname="test4()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test4()]"/>
+  </testsuite>
+  <testsuite name="main.TestScore" time="0.002" displayname="TestScore" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]">
+    <testcase name="test1" classname="main.TestScore" time="0.001" displayname="test1" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test1(main.TestScore)]"/>
+    <testcase name="test2" classname="main.TestScore" time="0.0" displayname="test2" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test2(main.TestScore)]"/>
+    <testcase name="test3" classname="main.TestScore" time="0.0" displayname="test3" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test3(main.TestScore)]"/>
+    <testcase name="test4" classname="main.TestScore" time="0.001" displayname="test4" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test4(main.TestScore)]"/>
+  </testsuite>
+</testrun>

@@ -194,7 +194,7 @@ public class PlayerClient implements Serializable
 				
 		for(int i=1; i<6; i++)
 		{
-			if(types[i] == 8 )
+			if(types[i] >= 8 )
 			{
 				Score += 4000;
 				types[i] = 0;
@@ -225,14 +225,14 @@ public class PlayerClient implements Serializable
 				types[i] = 0;
 			}
 		}
-		FC_counter += Full_Chest(types, Dices);
+		Score += Full_Chest(types, Dices);
 		return Score * time;
 	}
 	
 	//give 500 if Full_chest
 	public int Full_Chest(int[] types, int[] dices)
 	{
-		if(Count(dices,0) > 0)
+		if(Count(dices,0) > 0 || Count(dices,-1) >0)
 		{return 0;}
 		else if((types[1]>0) || (types[3]>0) || (types[4]>0))
 		{return 0;}

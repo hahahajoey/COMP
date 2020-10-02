@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestScore (1)" project="Pirates" tests="50" started="50" failures="0" errors="0" ignored="0">
+  <testsuite name="main.TestScore" time="0.033" displayname="TestScore" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]">
+    <testcase name="test10" classname="main.TestScore" time="0.005" displayname="test10()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test10()]"/>
+    <testcase name="test11" classname="main.TestScore" time="0.001" displayname="test11()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test11()]"/>
+    <testcase name="test12" classname="main.TestScore" time="0.0" displayname="test12()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test12()]"/>
+    <testcase name="test13" classname="main.TestScore" time="0.001" displayname="test13()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test13()]"/>
+    <testcase name="test14" classname="main.TestScore" time="0.0" displayname="test14()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test14()]"/>
+    <testcase name="test15" classname="main.TestScore" time="0.001" displayname="test15()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test15()]"/>
+    <testcase name="test16" classname="main.TestScore" time="0.0" displayname="test16()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test16()]"/>
+    <testcase name="test17" classname="main.TestScore" time="0.001" displayname="test17()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test17()]"/>
+    <testcase name="test18" classname="main.TestScore" time="0.0" displayname="test18()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test18()]"/>
+    <testcase name="test19" classname="main.TestScore" time="0.0" displayname="test19()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test19()]"/>
+    <testcase name="test20" classname="main.TestScore" time="0.001" displayname="test20()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test20()]"/>
+    <testcase name="test21" classname="main.TestScore" time="0.0" displayname="test21()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test21()]"/>
+    <testcase name="test22" classname="main.TestScore" time="0.001" displayname="test22()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test22()]"/>
+    <testcase name="test23" classname="main.TestScore" time="0.0" displayname="test23()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test23()]"/>
+    <testcase name="test24" classname="main.TestScore" time="0.001" displayname="test24()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test24()]"/>
+    <testcase name="test25" classname="main.TestScore" time="0.0" displayname="test25()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test25()]"/>
+    <testcase name="test1" classname="main.TestScore" time="0.0" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test1()]"/>
+    <testcase name="test2" classname="main.TestScore" time="0.001" displayname="test2()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test2()]"/>
+    <testcase name="test3" classname="main.TestScore" time="0.0" displayname="test3()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test3()]"/>
+    <testcase name="test4" classname="main.TestScore" time="0.0" displayname="test4()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test4()]"/>
+    <testcase name="test5" classname="main.TestScore" time="0.001" displayname="test5()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test5()]"/>
+    <testcase name="test6" classname="main.TestScore" time="0.0" displayname="test6()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test6()]"/>
+    <testcase name="test7" classname="main.TestScore" time="0.001" displayname="test7()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test7()]"/>
+    <testcase name="test8" classname="main.TestScore" time="0.0" displayname="test8()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test8()]"/>
+    <testcase name="test9" classname="main.TestScore" time="0.018" displayname="test9()" uniqueid="[engine:junit-jupiter]/[class:main.TestScore]/[method:test9()]"/>
+  </testsuite>
+  <testsuite name="main.TestScore" time="0.006" displayname="TestScore" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]">
+    <testcase name="test10" classname="main.TestScore" time="0.001" displayname="test10" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test10(main.TestScore)]"/>
+    <testcase name="test11" classname="main.TestScore" time="0.0" displayname="test11" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test11(main.TestScore)]"/>
+    <testcase name="test12" classname="main.TestScore" time="0.001" displayname="test12" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test12(main.TestScore)]"/>
+    <testcase name="test13" classname="main.TestScore" time="0.0" displayname="test13" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test13(main.TestScore)]"/>
+    <testcase name="test14" classname="main.TestScore" time="0.0" displayname="test14" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test14(main.TestScore)]"/>
+    <testcase name="test15" classname="main.TestScore" time="0.0" displayname="test15" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test15(main.TestScore)]"/>
+    <testcase name="test16" classname="main.TestScore" time="0.0" displayname="test16" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test16(main.TestScore)]"/>
+    <testcase name="test17" classname="main.TestScore" time="0.0" displayname="test17" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test17(main.TestScore)]"/>
+    <testcase name="test18" classname="main.TestScore" time="0.001" displayname="test18" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test18(main.TestScore)]"/>
+    <testcase name="test19" classname="main.TestScore" time="0.0" displayname="test19" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test19(main.TestScore)]"/>
+    <testcase name="test20" classname="main.TestScore" time="0.0" displayname="test20" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test20(main.TestScore)]"/>
+    <testcase name="test21" classname="main.TestScore" time="0.0" displayname="test21" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test21(main.TestScore)]"/>
+    <testcase name="test22" classname="main.TestScore" time="0.0" displayname="test22" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test22(main.TestScore)]"/>
+    <testcase name="test23" classname="main.TestScore" time="0.001" displayname="test23" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test23(main.TestScore)]"/>
+    <testcase name="test24" classname="main.TestScore" time="0.0" displayname="test24" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test24(main.TestScore)]"/>
+    <testcase name="test25" classname="main.TestScore" time="0.0" displayname="test25" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test25(main.TestScore)]"/>
+    <testcase name="test1" classname="main.TestScore" time="0.0" displayname="test1" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test1(main.TestScore)]"/>
+    <testcase name="test2" classname="main.TestScore" time="0.0" displayname="test2" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test2(main.TestScore)]"/>
+    <testcase name="test3" classname="main.TestScore" time="0.0" displayname="test3" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test3(main.TestScore)]"/>
+    <testcase name="test4" classname="main.TestScore" time="0.001" displayname="test4" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test4(main.TestScore)]"/>
+    <testcase name="test5" classname="main.TestScore" time="0.0" displayname="test5" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test5(main.TestScore)]"/>
+    <testcase name="test6" classname="main.TestScore" time="0.0" displayname="test6" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test6(main.TestScore)]"/>
+    <testcase name="test7" classname="main.TestScore" time="0.0" displayname="test7" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test7(main.TestScore)]"/>
+    <testcase name="test8" classname="main.TestScore" time="0.0" displayname="test8" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test8(main.TestScore)]"/>
+    <testcase name="test9" classname="main.TestScore" time="0.001" displayname="test9" uniqueid="[engine:junit-vintage]/[runner:main.TestScore]/[test:test9(main.TestScore)]"/>
+  </testsuite>
+</testrun>
