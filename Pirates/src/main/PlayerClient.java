@@ -19,7 +19,7 @@ public class PlayerClient implements Serializable
 	public String name;
 	int id;
 	ScorePad[] Player_Score = new ScorePad[3];
-	static Client Player_Client_Connect;
+	Client Player_Client_Connect;
 	static Scanner input = new Scanner(System.in);;
 	
 	public PlayerClient(String name)
@@ -126,7 +126,7 @@ public class PlayerClient implements Serializable
 		}
 		
 		int Score_change = C_Score(dices, Chest, FC, FC_counter);
-		System.out.println(Score_change);
+		System.out.println("You get " + Score_change);
 		
 		if(Score_change > 0 || FC == 3)
 		{
@@ -422,12 +422,18 @@ public class PlayerClient implements Serializable
 		return Dies;
 	}
 	
-	public void returnWin()
+	public boolean returnWin()
 	{
 		if(Player_Score[id-1].win)
-		{System.out.println("You win");}
+		{
+			System.out.println("You win");
+			return true;
+		}
 		else
-		{System.out.println("You lost");}
+		{
+			System.out.println("You lost");
+			return false;
+		}
 	}
 	
 	public void printPlayerScores(int id) 
@@ -452,7 +458,7 @@ public class PlayerClient implements Serializable
 		}
 	}
 	
-	private class Client
+	public class Client
 	{
 		Socket socket;
 		private ObjectInputStream In;

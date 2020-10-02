@@ -1,0 +1,38 @@
+package main;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import junit.framework.TestCase;
+
+
+//Unit test for hole game
+public class GamePlayTest extends TestCase
+{
+	//Test Case for one turn wining for Player 3
+	public void OneTurn() throws ClassNotFoundException
+	{
+		GameServer GS = new GameServer();
+		PlayerClient P1 = new PlayerClient("P1");
+		PlayerClient P2 = new PlayerClient("P2");
+		PlayerClient P3 = new PlayerClient("P3");
+		
+		GS.Connect();
+		P1.connectClient();
+		P2.connectClient();
+		P3.connectClient();
+		
+		GS.Loop();
+		P1.Player_Score = PlayerClient.Player_Client_Connect.receiveScorePad();
+		P2.Player_Score = PlayerClient.Player_Client_Connect.receiveScorePad();
+		P3.Player_Score = PlayerClient.Player_Client_Connect.receiveScorePad();
+		
+		PlayerClient.Player_Client_Connect.receiveRoundNum();
+		P1.Player_Score = PlayerClient.Player_Client_Connect.receiveScorePad();
+	}
+	
+	//make dices for the test
+	
+
+}
