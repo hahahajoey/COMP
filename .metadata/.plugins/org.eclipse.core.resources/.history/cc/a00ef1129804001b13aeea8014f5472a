@@ -196,31 +196,27 @@ public class TestScore extends TestCase
 	@Test
 	public void test22() 
 	{
-		int[] dice = {5,5,5,-1,-1,-1,-1,-1};
-		assertEquals(500, P1.C_Score(dice, null, 4, 0));
+
 	}
 	
 	//score a set of 3 coins over 2 rolls  (SC 600)
 	@Test
 	public void test23() 
 	{
-		int[] dice = {2,2,2,-1,-1,-1,-1,-1};
-		assertEquals(600, P1.C_Score(dice, null, 4, 0));
+
 	}
 	
 	//score a set of 3 coins over 2 rolls  with FC is diamond (SC 500)
 	@Test
 	public void test24() 
 	{
-		int[] dice = {2,2,2,-1,-1,-1,-1,-1};
-		assertEquals(500, P1.C_Score(dice, null, 5, 0));
+
 	}
 	
 	//score a set of 4 monkeys and a set of 3 coins (including the COIN fortune card) (SC 600)
 	@Test
 	public void test25() 
 	{
-		int[] dice = {3,3,3,3,2,2,2,-1};
-		assertEquals(600, P1.C_Score(dice, null, 2, 0));
+
 	}
 }

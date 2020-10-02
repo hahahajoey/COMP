@@ -220,7 +220,6 @@ public class TestScore extends TestCase
 	@Test
 	public void test25() 
 	{
-		int[] dice = {3,3,3,3,2,2,2,-1};
-		assertEquals(600, P1.C_Score(dice, null, 2, 0));
+
 	}
 }
